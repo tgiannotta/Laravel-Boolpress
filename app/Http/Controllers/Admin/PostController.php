@@ -49,6 +49,8 @@ class PostController extends Controller
 
         $new_post = new Post();
         $new_post->fill($form_data);
+
+       
         $new_post->slug = $this->getUniqueSlugFromTitle($form_data['title']);
        
         $new_post->save();
@@ -100,7 +102,11 @@ class PostController extends Controller
     {
         $form_data = $request->all();
         $request->validate($this->getValidationRules());
-        $form_data['slug'] = $this->getUniqueSlugFromTitle($form_data['title']);
+
+        if($form_data['title'] != $post->title){
+            $form_data['slug'] = $this->getUniqueSlugFromTitle($form_data['title']);
+            
+        }
         $post = Post::findOrFail($id);
         $post->update($form_data);
 
@@ -115,7 +121,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('admin.posts.index');
     }
     protected function getValidationRules(){
         return [
