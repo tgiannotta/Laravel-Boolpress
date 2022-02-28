@@ -15,7 +15,7 @@ class TagsTableSeeder extends Seeder
         $tags = ['carne', 'pesce', 'vegetariano', 'piatto Veloce'];
         foreach ($tags as $tag) {
             $new_tag = new Tag();
-            $new_tag->name =$tag;
+            $new_tag->name = $tag;
             $new_tag->slug = Str::slug($tag); 
             $new_tag->save();
         }
