@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -32,7 +33,15 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+
+        $data = [
+            'categories' => $categories
+        ];
+        
+        
+        
+        return view('admin.posts.create', $data);
     }
 
     /**
@@ -44,7 +53,6 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $form_data = $request->all();
-
         $request->validate($this->getValidationRules());
 
         $new_post = new Post();
@@ -85,7 +93,7 @@ class PostController extends Controller
     public function edit($id)
     {
         
-        $post = Post:: findOrFail($id);
+        $post = Post::findOrFail($id);
         $data = [
             'post' => $post
         ];
@@ -106,11 +114,13 @@ class PostController extends Controller
         $form_data = $request->all();
         $request->validate($this->getValidationRules());
 
+        $post = Post::findOrFail($id);
+
+        
         if($form_data['title'] != $post->title){
             $form_data['slug'] = $this->getUniqueSlugFromTitle($form_data['title']);
             
         }
-        $post = Post::findOrFail($id);
         $post->update($form_data);
 
         return redirect()->route('admin.posts.show', ['post' =>$post->id]);
