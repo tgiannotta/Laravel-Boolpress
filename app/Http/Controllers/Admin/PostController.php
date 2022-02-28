@@ -94,8 +94,10 @@ class PostController extends Controller
     {
         
         $post = Post::findOrFail($id);
+        $categories = Category::all();
         $data = [
-            'post' => $post
+            'post' => $post,
+            'categories' => $categories
         ];
         
         
