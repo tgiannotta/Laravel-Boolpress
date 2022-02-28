@@ -5,6 +5,10 @@
         <div class="container">
             <h1>{{$post->title}}</h1>
             <div class="mb-2">Slug: {{ $post->slug }}</div>
+            @if ($post->category)
+                <div class="mb-2">Category: {{ $post->category->name }}</div> 
+            @endif
+
             <p>{{ $post->content }}}</p>
 
             <div>
