@@ -9,6 +9,16 @@
                 <div class="mb-2">Category: {{ $post->category->name }}</div> 
             @endif
 
+            <div class="mb-2">Tags:
+                @forelse ($post->tags as $tag)
+                    {{$tag->name}}{{$loop->last ? '' : ', '}}
+                    
+                @empty
+                    nessuno
+                @endforelse
+            </div>
+
+
             <p>{{ $post->content }}}</p>
 
             <div>
