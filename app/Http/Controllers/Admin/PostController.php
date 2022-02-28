@@ -56,6 +56,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $form_data = $request->all();
+        
         $request->validate($this->getValidationRules());
 
         $new_post = new Post();
@@ -65,6 +66,10 @@ class PostController extends Controller
         $new_post->slug = $this->getUniqueSlugFromTitle($form_data['title']);
        
         $new_post->save();
+        if(isset($form_data['tags'])){
+            $new_post->tags()->sync($form_data['tags']);
+
+        }
 
         return redirect()->route('admin.posts.show', ['post' => $new_post->id]);
     }
