@@ -1,9 +1,15 @@
 <template>
-    <h1> WorkInProgress</h1>
+    <div>
+        <Posts />
+    </div>
 </template>
 
 <script>
+import Posts from '../components/Posts.vue';
 export default {
-  name: 'App'
+    name: 'App',
+    components: {
+        Posts
+    }
 }
 </script>

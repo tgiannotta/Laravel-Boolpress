@@ -12,7 +12,11 @@ class PostController extends Controller
     public function index(){
         $posts = Post::all();
 
+        $response_array = [
+            'success' =>true,
+            'results' =>$posts
+        ];
 
-        return response()->json($posts);
+        return response()->json($response_array);
     }
 }
