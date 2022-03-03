@@ -46,7 +46,7 @@ export default {
         return{
             posts: [],
             currentPage: 1,
-            lastaPage: 0
+            lastPage: 0
         };
     },
     methods: {
