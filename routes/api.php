@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+/* Route Post API endpoints */
 Route::get('/posts', 'Api\PostController@index');
 Route::get('/posts/{slug}', 'Api\PostController@show');
+
+/* Route Tag api endpoints */
+Route::get('/tags/{slug}', 'Api\TagController@show');
