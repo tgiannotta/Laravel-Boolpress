@@ -6,6 +6,8 @@ import Home from './pages/Home.vue'
 import About from './pages/About.vue'
 import Blog from './pages/Blog.vue'
 import PostDetails from './pages/PostDetails.vue'
+import TagDetails from './pages/TagDetails.vue'
+
 
 
 
@@ -32,6 +34,11 @@ const router = new VueRouter({
             path: "/blog/:slug",
             name: "post-details",
             component: PostDetails
+        },
+        {
+            path: "/tags/:slug",
+            name: "tag-details",
+            component: TagDetails
         },
     ]
 });
