@@ -2773,7 +2773,25 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _vm._m(0, true),
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: {
+                          name: "post-details",
+                          params: { slug: post.slug },
+                        },
+                      },
+                    },
+                    [_vm._v("Read Article")]
+                  ),
+                ],
+                1
+              ),
             ]),
           ])
         }),
@@ -2860,22 +2878,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-        _vm._v("Card link"),
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "card-link", attrs: { href: "#" } }, [
-        _vm._v("Another link"),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

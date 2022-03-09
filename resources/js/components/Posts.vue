@@ -13,8 +13,8 @@
                             </div>
                           
                             <div class="card-body">
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <router-link :to="{ name:'post-details', params: {slug: post.slug}}">Read Article</router-link>
+                                
                             </div>
                             </div>
                 </div>
