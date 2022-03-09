@@ -2128,6 +2128,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostDetails',
   data: function data() {
@@ -2997,6 +3001,24 @@ var render = function () {
   return _c("section", [
     _c("div", { staticClass: "container" }, [
       _c("h1", [_vm._v(_vm._s(_vm.post_details.title))]),
+      _vm._v(" "),
+      _vm.post_details.category
+        ? _c("div", [
+            _vm._v("Category: " + _vm._s(_vm.post_details.category.name)),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        _vm._l(_vm.post_details.tags, function (tag) {
+          return _c(
+            "span",
+            { key: tag.id, staticClass: "badge bg-primary mx-1" },
+            [_vm._v(_vm._s(tag.name))]
+          )
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("p", [_vm._v(_vm._s(_vm.post_details.content))]),
     ]),

@@ -20,11 +20,12 @@ class PostController extends Controller
         return response()->json($response_array);
     }
     public function show($slug){
-            $post = Post::where('slug', '=', $slug)->first();
+            $post = Post::where('slug', '=', $slug)->with (['category', 'tags'])->first();
             
             return response()->json([
                 'success' => true,
                 'results' => $post
+                
             ]);
     }
 }
